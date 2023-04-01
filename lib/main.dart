@@ -1,36 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/domain/constants.dart' as constants;
+import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/screens/main_screed.dart';
 
 void main() => runApp(MaterialApp(
-      home: Home(),
+      home: MyApp(),
     ));
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Portfolio'),
-        centerTitle: true,
-        backgroundColor: Colors.deepPurple[800],
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "shizzed portfolio",
+      theme: ThemeData.dark().copyWith(
+        primaryColor: constants.primaryColor,
+        scaffoldBackgroundColor: constants.bgColor,
+        canvasColor: constants.bgColor,
+        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
+            .apply(bodyColor: Colors.white)
+            .copyWith(
+              titleMedium: TextStyle(color: Colors.white),
+              titleSmall: TextStyle(color: constants.bodyTextColor),
+            ),
       ),
-      body: Center(
-          child: Text(
-        'Hello',
-        style: TextStyle(
-          fontSize: 20.0,
-          fontWeight: FontWeight.bold,
-          letterSpacing: 2,
-          color: Colors.grey[600],
-          fontFamily: 'IndieFlower',
-        ),
-      )),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => print('Hello'),
-        backgroundColor: Colors.deepPurple[800],
-        child: const Text('click'),
-      ),
+      home: MainScreen(),
     );
   }
 }
