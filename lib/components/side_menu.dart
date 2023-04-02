@@ -8,6 +8,9 @@ import 'package:portfolio/components/user_card.dart';
 import 'package:portfolio/domain/constants.dart' as constants;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'coding_card.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:convert';
+import 'dart:html';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({super.key});
@@ -48,46 +51,59 @@ class SideMenu extends StatelessWidget {
                   Divider(),
                   LanguagesCard(),
                   Divider(),
-                  TextButton(
-                    onPressed: () {},
-                    child: FittedBox(
-                      child: Row(
-                        children: [
-                          Text(
-                            "Download CV",
-                            style: TextStyle(
-                                color: Theme.of(context)
-                                    .textTheme
-                                    .labelSmall
-                                    ?.color),
-                          ),
-                          SizedBox(
-                            width: constants.defaultPadding / 2,
-                          ),
-                          SvgPicture.asset("assets/icons/download.svg")
-                        ],
-                      ),
-                    ),
-                  ),
                   Container(
-                    margin: EdgeInsets.only(top: constants.defaultPadding / 2),
-                    color: Color(0xFF24242E),
+                    margin: const EdgeInsets.only(
+                        top: constants.defaultPadding / 2),
+                    color: const Color(0xFF24242E),
                     child: Row(
                       children: [
-                        Spacer(),
+                        const Spacer(),
                         IconButton(
-                          onPressed: () {},
-                          icon: SvgPicture.asset("assets/icons/linkedin.svg"),
+                          onPressed: () {
+                            var uri = Uri.https("linkedin.com",
+                                "/in/przemysław-klejno-233b59178/");
+                            canLaunchUrl(uri).then((bool canLaunch) => canLaunch
+                                ? launchUrl(uri)
+                                : print("Cannot open linkedin"));
+                          },
+                          icon: SvgPicture.asset(
+                            "assets/icons/linkedin.svg",
+                            color: Colors.white,
+                            width: constants.defaultPadding,
+                          ),
                         ),
                         IconButton(
-                          onPressed: () {},
-                          icon: SvgPicture.asset("assets/icons/github.svg"),
+                          onPressed: () {
+                            var uri = Uri.https("github.com", "/pemix09");
+                            canLaunchUrl(uri).then(
+                              (bool canLaunch) => canLaunch
+                                  ? launchUrl(uri)
+                                  : print("Cannot open github"),
+                            );
+                          },
+                          icon: SvgPicture.asset(
+                            "assets/icons/github.svg",
+                            color: Colors.white,
+                            width: constants.defaultPadding,
+                          ),
                         ),
                         IconButton(
-                          onPressed: () {},
-                          icon: SvgPicture.asset("assets/icons/twitter.svg"),
+                          onPressed: () {
+                            var uri =
+                                Uri.https("facebook.com", "/przemek.kl.90");
+                            canLaunchUrl(uri).then(
+                              (bool canLaunch) => canLaunch
+                                  ? launchUrl(uri)
+                                  : print("Cannot open facebook"),
+                            );
+                          },
+                          icon: SvgPicture.asset(
+                            "assets/icons/facebook.svg",
+                            color: Colors.white,
+                            width: constants.defaultPadding,
+                          ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                       ],
                     ),
                   )
