@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/domain/constants.dart' as constants;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/screens/main_screed.dart';
 
-void main() => runApp(MaterialApp(
-      home: MyApp(),
-    ));
+void main() => runApp(const ProviderScope(child: MyApp()));
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -22,11 +21,11 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
             .apply(bodyColor: Colors.white)
             .copyWith(
-              titleMedium: TextStyle(color: Colors.white),
-              titleSmall: TextStyle(color: constants.bodyTextColor),
+              titleMedium: const TextStyle(color: Colors.white),
+              titleSmall: const TextStyle(color: constants.bodyTextColor),
             ),
       ),
-      home: MainScreen(),
+      home: const MainScreen(),
     );
   }
 }

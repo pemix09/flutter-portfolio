@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/domain/constants.dart' as constants;
+import 'package:portfolio/screens/about_page.dart';
 
 import '../components/side_menu.dart';
 import '../components/user_card.dart';
@@ -24,8 +25,8 @@ class _MainScreenState extends State<MainScreen> {
             ),
             Expanded(
               flex: 7,
-              child: Container(
-                color: Colors.blue,
+              child: PageView(
+                children: [AboutPage()],
               ),
             ),
           ]),
