@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/domain/constants.dart' as constants;
 import 'package:portfolio/screens/about_page.dart';
-
+import '../components/nav_bar.dart';
 import '../components/side_menu.dart';
 import '../components/user_card.dart';
+import 'contact_me_page.dart';
+import 'experience_page.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -25,8 +27,18 @@ class _MainScreenState extends State<MainScreen> {
             ),
             Expanded(
               flex: 7,
-              child: PageView(
-                children: [AboutPage()],
+              child: DefaultTabController(
+                length: 3,
+                child: Scaffold(
+                  appBar: NavBar(),
+                  body: TabBarView(
+                    children: [
+                      AboutPage(),
+                      ExperiencePage(),
+                      ContactMePage(),
+                    ],
+                  ),
+                ),
               ),
             ),
           ]),

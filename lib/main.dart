@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/domain/constants.dart' as constants;
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/screens/main_screed.dart';
+import 'package:portfolio/screens/main_screen.dart';
 
 void main() => runApp(const ProviderScope(child: MyApp()));
 
