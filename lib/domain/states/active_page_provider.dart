@@ -5,5 +5,8 @@ final activePageProvider = StateNotifierProvider((ref) => ActivePageState());
 class ActivePageState extends StateNotifier<String> {
   ActivePageState() : super("Przemysław Klejno prortfolio");
 
-  void changeActivePage(String activePage) => state = activePage;
+  void changeActivePage(String activePage) {
+    state = activePage;
+    print("State: $state");
+  }
 }
